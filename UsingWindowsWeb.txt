@@ -1,0 +1,45 @@
+Using selenium with webdriver:
+import org.junit.Assert;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import net.thucydides.core.annotations.findby.By;
+
+public class SampleSemo {
+
+       public static void main(String[] args) throws InterruptedException {
+              // TODO Auto-generated method stub
+              System.setProperty("webdriver.chrome.driver",".\\chromedriver.exe");
+              WebDriver driver=new ChromeDriver();
+              driver.get("https://www.dbs.com.sg");
+              driver.manage().window().maximize();
+              Thread.sleep(2000);
+              driver.findElement(By.xpath("//tag[contains(text(),'Cards')]")).click();
+              driver.findElement(By.xpath("//tag[contains(text(),'Credit Cards')]")).click();
+              driver.findElement(By.xpath("(//input[@type='checkbox'])[1]")).click();
+              driver.findElement(By.xpath("(//input[@type='checkbox'])[2]")).click();
+              
+              //****************first card assersition**************************************************
+              Assert.assertEquals("DBS Altitude Visa Signature Card", driver.findElement(By.xpath("//tag[contains(text(),'DBS Altitude Visa Signature Card')]")).getText());
+              Assert.assertEquals("Apply Now", driver.findElement(By.xpath("//tag[contains(text(),'Apply Now')]")).getText());
+              Assert.assertEquals("More Details", driver.findElement(By.xpath("//tag[contains(text(),'More Details')]")).getText());
+              Assert.assertEquals("it's fastest way to ply anywhere", driver.findElement(By.xpath("//tag[contains(text(),'it's fastest way to ply anywhere')]")).getText());
+              Assert.assertEquals("VISA", driver.findElement(By.xpath("//tag[contains(text(),'VISA')]")).getText());
+              Assert.assertEquals("S$30,000", driver.findElement(By.xpath("//tag[contains(text(),'S$30,000')]")).getText());
+              Assert.assertEquals("S$45,000", driver.findElement(By.xpath("//tag[contains(text(),'S$45,000')]")).getText());
+              Assert.assertEquals("1 year", driver.findElement(By.xpath("//tag[contains(text(),'1 year')]")).getText());
+              
+              //****************second card assersition**************************************************
+              Assert.assertEquals("DBS Block Visa Card", driver.findElement(By.xpath("//tag[contains(text(),'DBS Block Visa Card')]")).getText());
+              Assert.assertEquals("Apply Now", driver.findElement(By.xpath("//tag[contains(text(),'Apply Now')]")).getText());
+              Assert.assertEquals("More Details", driver.findElement(By.xpath("//tag[contains(text(),'More Details')]")).getText());
+              Assert.assertEquals("Shopping is the new black", driver.findElement(By.xpath("//tag[contains(text(),'Shopping is the new black')]")).getText());
+              Assert.assertEquals("VISA", driver.findElement(By.xpath("(//tag[contains(text(),'VISA')])[2]")).getText());
+              Assert.assertEquals("S$30,000", driver.findElement(By.xpath("(//tag[contains(text(),'S$30,000')])[2]")).getText());
+              Assert.assertEquals("S$45,000", driver.findElement(By.xpath("(//tag[contains(text(),'S$45,000')])[2]")).getText());
+              Assert.assertEquals("1 year", driver.findElement(By.xpath("(//tag[contains(text(),'1 year')])[2]")).getText());
+              
+       }
+
+}
+
